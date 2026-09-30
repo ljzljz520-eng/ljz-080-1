@@ -1,0 +1,24 @@
+{
+  "name": "cross-border-sample-loan",
+  "private": true,
+  "version": "1.0.0",
+  "description": "跨境样品借测系统（Remix + Fastify + PostgreSQL）",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "node scripts/dev-api.mjs",
+    "dev:web": "npm --workspace packages/web run dev",
+    "build": "npm --workspace packages/api run build && npm --workspace packages/web run build",
+    "migrate": "node packages/api/scripts/migrate.mjs",
+    "seed": "node packages/api/scripts/seed.mjs",
+    "db:start": "node scripts/db-start.mjs",
+    "setup": "npm run migrate && npm run seed"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.10",
+    "concurrently": "^9.1.0",
+    "tsx": "^4.19.2"
+  }
+}

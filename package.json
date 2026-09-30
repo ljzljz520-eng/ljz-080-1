@@ -1,0 +1,14 @@
+{
+  "name": "sample-loan-system",
+  "private": true,
+  "workspaces": [
+    "packages/api",
+    "packages/web"
+  ],
+  "scripts": {
+    "db:init": "tsx scripts/init-db.ts",
+    "dev:api": "npm run dev --workspace=packages/api",
+    "dev:web": "npm run dev --workspace=packages/web",
+    "build:web": "npm run build --workspace=packages/web"
+  }
+}
